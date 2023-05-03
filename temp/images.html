@@ -9,7 +9,7 @@
       h1 {
         font-family: Arial, sans-serif;
       }
-      #Present {
+      #current {
         margin: 5% auto;
         display: block;
         max-width: 80%;
@@ -24,36 +24,36 @@
         text-decoration: none;
         display: inline-block;
         font-size: 2.5vw;
-        margin: 2.5% auto margin;
+        margin: 2.5% auto;
         cursor: pointer;
       }
     </style>
   </head>
-  <body onload="default()">
+  <body onload="defaultImage()">
     <h1>My Images</h1>
     <img id="current" src="" />
     <br>
-    <button onclick="ChangeImage()">Next Image</button>
+    <button onclick="changeImage()">Next Image</button>
     <script>
-      var pointer = 0;
+      var cursor = 0;
       var images = [];
 
-      function change_image() {
-        pointer++;
+      function changeImage() {
+        cursor++;
         if (cursor >= images.length) {
           cursor = 0;
         }
         document.getElementById("current").src = images[cursor];
       }
 
-      default function() {
+      function defaultImage() {
         fetch('https://pwcreatures.vercel.app/bin/images.json')
           .then(response => response.json())
           .then(data => {
             images = data.images;
             document.getElementById("current").src = images[cursor];
           })
-          .catch(error => console. error(error));
+          .catch(error => console.error(error));
       }
     </script>
   </body>
